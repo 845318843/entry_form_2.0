@@ -1,0 +1,913 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5962690A-7EE3-4CD3-9415-321644EE643A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JZT_Search</RootNamespace>
+    <AssemblyName>JZT_Search</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.7.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery.UI.Combined">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.8.20\lib\net45\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.4.5.6\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms, Version=4.5.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.4.5.6\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.3.12153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Membership.OpenAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Membership.OpenAuth.1.0.0\lib\net45\Microsoft.AspNet.Membership.OpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.0.0\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="JZT_Search\asset\css\bootstrap-theme.css" />
+    <Content Include="JZT_Search\asset\css\bootstrap-theme.min.css" />
+    <Content Include="JZT_Search\asset\css\bootstrap.css" />
+    <Content Include="JZT_Search\asset\css\bootstrap.min.css" />
+    <Content Include="JZT_Search\asset\css\dtable.css" />
+    <Content Include="JZT_Search\asset\css\font-awesome.css" />
+    <Content Include="JZT_Search\asset\css\font-awesome.min.css" />
+    <Content Include="JZT_Search\asset\css\login.css" />
+    <Content Include="JZT_Search\asset\css\plugins\chosen\chosen-sprite%402x.png" />
+    <Content Include="JZT_Search\asset\css\plugins\chosen\chosen-sprite.png" />
+    <Content Include="JZT_Search\asset\css\plugins\chosen\chosen.css" />
+    <Content Include="JZT_Search\asset\css\plugins\datepicker\datepicker.css" />
+    <Content Include="JZT_Search\asset\css\plugins\files\bootstrap-checkbox.css" />
+    <Content Include="JZT_Search\asset\css\plugins\files\nprogress.css" />
+    <Content Include="JZT_Search\asset\css\plugins\files\tipsy.css" />
+    <Content Include="JZT_Search\asset\css\plugins\img\icons.png" />
+    <Content Include="JZT_Search\asset\css\style.css" />
+    <Content Include="JZT_Search\asset\datatable\media\css\demo_page.css" />
+    <Content Include="JZT_Search\asset\datatable\media\css\demo_table.css" />
+    <Content Include="JZT_Search\asset\datatable\media\css\demo_table_jui.css" />
+    <Content Include="JZT_Search\asset\datatable\media\css\jquery.dataTables.css" />
+    <Content Include="JZT_Search\asset\datatable\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="JZT_Search\asset\datatable\media\images\back_disabled.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\back_enabled.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\back_enabled_hover.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\favicon.ico" />
+    <Content Include="JZT_Search\asset\datatable\media\images\forward_disabled.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\forward_enabled.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\forward_enabled_hover.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\sort_asc.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\sort_asc_disabled.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\sort_both.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\sort_desc.png" />
+    <Content Include="JZT_Search\asset\datatable\media\images\sort_desc_disabled.png" />
+    <Content Include="JZT_Search\asset\datatable\media\js\jquery.dataTables.js" />
+    <Content Include="JZT_Search\asset\datatable\media\js\jquery.dataTables.min.js" />
+    <Content Include="JZT_Search\asset\datatable\media\js\jquery.js" />
+    <Content Include="JZT_Search\asset\datatable\media\js\sorting.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\api\api.internal.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\api\api.methods.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\api\api.static.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.ajax.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.columns.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.constructor.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.data.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.draw.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.filter.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.info.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.init.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.length.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.page.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.processing.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.scrolling.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.sizing.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.sort.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.state.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\core\core.support.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\DataTables.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\ext\ext.classes.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\ext\ext.paging.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\ext\ext.sorting.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\ext\ext.types.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\model\model.column.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\model\model.defaults.columns.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\model\model.defaults.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\model\model.ext.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\model\model.row.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\model\model.search.js" />
+    <Content Include="JZT_Search\asset\datatable\media\src\model\model.settings.js" />
+    <Content Include="JZT_Search\asset\fonts\fontawesome-webfont.svg" />
+    <Content Include="JZT_Search\asset\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="JZT_Search\asset\fonts\icomoon.dev.svg" />
+    <Content Include="JZT_Search\asset\fonts\icomoon.svg" />
+    <Content Include="JZT_Search\asset\fonts\license.txt" />
+    <Content Include="JZT_Search\asset\img\applogo.png" />
+    <Content Include="JZT_Search\asset\img\loginavatar.png" />
+    <Content Include="JZT_Search\asset\img\solok.png" />
+    <Content Include="JZT_Search\asset\js\bootstrap.js" />
+    <Content Include="JZT_Search\asset\js\bootstrap.min.js" />
+    <Content Include="JZT_Search\asset\js\core.js" />
+    <Content Include="JZT_Search\asset\js\html5.js" />
+    <Content Include="JZT_Search\asset\js\jquery-1.11.0.min.js" />
+    <Content Include="JZT_Search\asset\js\JSlist.txt" />
+    <Content Include="JZT_Search\asset\js\modernizr.custom.js" />
+    <Content Include="JZT_Search\asset\js\plugins\bootbox.min.js" />
+    <Content Include="JZT_Search\asset\js\plugins\bootstrap-checkbox.js" />
+    <Content Include="JZT_Search\asset\js\plugins\bootstrap-datepicker.js" />
+    <Content Include="JZT_Search\asset\js\plugins\bootstrap3-typeahead.min.js" />
+    <Content Include="JZT_Search\asset\js\plugins\chosen.jquery.min.js" />
+    <Content Include="JZT_Search\asset\js\plugins\jquery.dlmenu.js" />
+    <Content Include="JZT_Search\asset\js\plugins\jquery.maskedinput.min.js" />
+    <Content Include="JZT_Search\asset\js\plugins\jquery.tipsy.js" />
+    <Content Include="JZT_Search\asset\js\plugins\nprogress.js" />
+    <Content Include="JZT_Search\index.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\changelog.txt" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\accordion.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\calendar.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\combo.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\combobox.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\combogrid.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\combotree.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datagrid.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datagrid2.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datagrid3.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datagrid4.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datagrid5.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datebox.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datetimebox.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\demo.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\dialog.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\draggable.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\droppable.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\droppable1.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\droppable2.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\easyloader.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\form.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\layout.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\layout1.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\layout2.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\linkbutton.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\menu.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\menubutton.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\messager.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\numberbox.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\numberbox2.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\numberspinner.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\pagination.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\panel.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\panel2.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\progressbar.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\propertygrid.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\resizable.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\searchbox.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\slider.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\splitbutton.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\tabs.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\tabs_href_test.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\timespinner.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\tree.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\tree2.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\treegrid.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\treegrid2.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\treegrid3.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\validatebox.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\window.html" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\easyloader.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\jquery-1.8.0.min.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\jquery.easyui.min.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\licence_gpl.txt" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\license_commercial.txt" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-af.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-bg.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-ca.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-cs.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-cz.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-da.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-de.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-en.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-es.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-fr.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-it.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-nl.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-pt_BR.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-ru.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-tr.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-zh_CN.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\locale\easyui-lang-zh_TW.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.accordion.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.calendar.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.combo.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.combobox.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.combogrid.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.combotree.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.datagrid.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.datebox.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.datetimebox.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.dialog.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.draggable.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.droppable.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.form.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.layout.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.linkbutton.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.menu.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.menubutton.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.messager.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.numberbox.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.numberspinner.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.pagination.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.panel.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.parser.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.progressbar.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.propertygrid.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.resizable.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.searchbox.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.slider.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.spinner.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.splitbutton.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.tabs.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.timespinner.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.tree.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.treegrid.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.validatebox.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\plugins\jquery.window.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\readme.txt" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\easyloader.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.accordion.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.calendar.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.combobox.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.datebox.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.draggable.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.droppable.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.form.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.linkbutton.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.menu.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.parser.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.progressbar.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.propertygrid.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.resizable.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.slider.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.tabs.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\src\jquery.window.js" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\accordion.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\calendar.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\combo.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\combobox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\datagrid.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\datebox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\dialog.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\easyui.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\accordion_collapse.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\accordion_expand.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\blank.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\button_a_bg.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\button_plain_hover.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\button_span_bg.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\calendar_nextmonth.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\calendar_nextyear.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\calendar_prevmonth.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\calendar_prevyear.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\combo_arrow.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\datagrid_header_bg.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\datagrid_row_collapse.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\datagrid_row_expand.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\datagrid_sort_asc.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\datagrid_sort_desc.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\datagrid_title_bg.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\datebox_arrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\layout_arrows.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\menu.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\menu_downarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\menu_rightarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\menu_sep.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\menu_split_downarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\messager_error.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\messager_info.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\messager_question.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\messager_warning.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\pagination_first.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\pagination_last.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\pagination_load.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\pagination_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\pagination_next.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\pagination_prev.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\panel_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\panel_title.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\panel_tools.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\searchbox_button.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\slider_handle.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\spinner_arrow_down.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\spinner_arrow_up.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tabs_active.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tabs_close.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tabs_enabled.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tabs_leftarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tabs_rightarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_arrows.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_checkbox_0.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_checkbox_1.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_checkbox_2.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_dnd_no.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_dnd_yes.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_elbow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_file.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_folder.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_folder_open.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\tree_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\validatebox_pointer.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\validatebox_warning.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\layout.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\linkbutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\menu.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\menubutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\messager.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\pagination.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\panel.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\progressbar.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\propertygrid.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\searchbox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\slider.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\spinner.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\splitbutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\tabs.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\tree.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\validatebox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\window.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\accordion.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\calendar.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\combo.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\combobox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\datagrid.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\datebox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\dialog.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\easyui.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\accordion_collapse.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\accordion_expand.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\blank.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\button_a_bg.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\button_plain_hover.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\button_span_bg.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\calendar_nextmonth.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\calendar_nextyear.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\calendar_prevmonth.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\calendar_prevyear.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\combo_arrow.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\datagrid_header_bg.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\datagrid_row_collapse.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\datagrid_row_expand.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\datagrid_sort_asc.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\datagrid_sort_desc.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\datagrid_title_bg.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\datebox_arrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\layout_arrows.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\menu.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\menu_downarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\menu_rightarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\menu_sep.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\menu_split_downarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\messager_error.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\messager_info.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\messager_question.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\messager_warning.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\pagination_first.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\pagination_last.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\pagination_load.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\pagination_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\pagination_next.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\pagination_prev.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\panel_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\panel_title.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\panel_tools.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\searchbox_button.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\slider_handle.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\spinner_arrow_down.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\spinner_arrow_up.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tabs_close.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tabs_enabled.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tabs_leftarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tabs_rightarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_arrows.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_checkbox_0.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_checkbox_1.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_checkbox_2.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_dnd_no.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_dnd_yes.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_elbow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_file.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_folder.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_folder_open.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\tree_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\validatebox_pointer.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\validatebox_warning.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\layout.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\linkbutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\menu.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\menubutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\messager.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\pagination.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\panel.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\progressbar.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\propertygrid.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\searchbox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\slider.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\spinner.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\splitbutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\tabs.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\tree.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\validatebox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\window.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icon.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\back.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\blank.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\cancel.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\cut.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\edit_add.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\edit_remove.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\filesave.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\help.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\mini_add.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\mini_edit.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\mini_refresh.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\no.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\ok.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\pencil.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\print.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\redo.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\reload.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\search.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\sum.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\tip.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\icons\undo.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\accordion.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\calendar.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\combo.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\combobox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\datagrid.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\datebox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\dialog.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\easyui.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\accordion_collapse.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\accordion_expand.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\blank.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\calendar_nextmonth.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\calendar_nextyear.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\calendar_prevmonth.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\calendar_prevyear.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\combo_arrow.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\datagrid_row_collapse.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\datagrid_row_expand.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\datagrid_sort_asc.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\datagrid_sort_desc.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\datebox_arrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\layout_arrows.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\menu_downarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\menu_rightarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\menu_sep.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\menu_split_downarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\messager_error.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\messager_info.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\messager_question.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\messager_warning.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\pagination_first.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\pagination_last.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\pagination_load.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\pagination_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\pagination_next.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\pagination_prev.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\panel_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\panel_tools.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\searchbox_button.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\slider_handle.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tabs_close.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tabs_leftarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tabs_rightarrow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_arrows.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_checkbox_0.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_checkbox_1.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_checkbox_2.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_dnd_no.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_dnd_yes.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_elbow.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_file.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_folder.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_folder_open.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\tree_loading.gif" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\images\validatebox_warning.png" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\layout.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\linkbutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\menu.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\menubutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\messager.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\pagination.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\panel.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\progressbar.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\propertygrid.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\searchbox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\slider.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\splitbutton.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\tabs.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\tree.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\validatebox.css" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\metro\window.css" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\login.html" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\bootstrap\css\bootstrap.css" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\bootstrap\js\bootstrap.js" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\css\style.css" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\backgrounds\1.jpg" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\backgrounds\2.jpg" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\backgrounds\3.jpg" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\blog.png" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\home.png" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\iphone.png" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\pattern.jpg" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\pencil.png" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\js\jquery-1.8.2.min.js" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\js\jquery.backstretch.min.js" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\js\scripts.js" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\index.html" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\ViewInfo.html" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\css\bootstrap.css" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\css\font-awesome.min.css" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\css\style.css" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\admin.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\award.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\Background-pattterns.txt" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\binding_dark.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\geometry.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\logo.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\moniter.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\premium.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\top-mouse.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\img\up.png" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\js\bootstrap.js" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\js\jquery-1.10.2.js" />
+    <Content Include="packages.config" />
+    <Content Include="JZT_Search\asset\css\bootstrap-theme.css.map" />
+    <Content Include="JZT_Search\asset\css\bootstrap.css.map" />
+    <Content Include="JZT_Search\asset\css\style.css.orj" />
+    <Content Include="JZT_Search\asset\datatable\media\images\Sorting icons.psd" />
+    <Content Include="JZT_Search\asset\fonts\fontawesome-webfont.eot" />
+    <Content Include="JZT_Search\asset\fonts\fontawesome-webfont.ttf" />
+    <Content Include="JZT_Search\asset\fonts\fontawesome-webfont.woff" />
+    <Content Include="JZT_Search\asset\fonts\FontAwesome.otf" />
+    <Content Include="JZT_Search\asset\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="JZT_Search\asset\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="JZT_Search\asset\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="JZT_Search\asset\fonts\icomoon.eot" />
+    <Content Include="JZT_Search\asset\fonts\icomoon.ttf" />
+    <Content Include="JZT_Search\asset\fonts\icomoon.woff" />
+    <Content Include="JZT_Search\asset\less\dtable.less" />
+    <Content Include="JZT_Search\asset\less\login.less" />
+    <Content Include="JZT_Search\asset\less\menuCss.less" />
+    <Content Include="JZT_Search\asset\less\pkelements.less" />
+    <Content Include="JZT_Search\asset\less\style.less" />
+    <Content Include="JZT_Search\demodata\autocomplete.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\combobox_data.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datagrid_data.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datagrid_data2.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\datagrid_data3.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\form_data.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\propertygrid_data.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\treegrid_data.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\treegrid_data2.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\treegrid_data3.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\treegrid_subdata.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\demo\tree_data.json" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\default\images\Thumbs.db" />
+    <Content Include="JZT_Search\jquery-easyui-1.3.1\themes\gray\images\Thumbs.db" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\bootstrap\img\Thumbs.db" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\backgrounds\Thumbs.db" />
+    <Content Include="JZT_Search\Modify\azmind_4_xe\assets\img\Thumbs.db" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\FontAwesome.otf" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="JZT_Search\Administrator\btts_22_ihm\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="File\JZT_SignUp_List.xlsx" />
+    <None Include="Properties\PublishProfiles\config.pubxml" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="SearchService.asmx" />
+    <Content Include="Service.asmx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchService.asmx.cs">
+      <DependentUpon>SearchService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service.asmx.cs">
+      <DependentUpon>Service.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{d7a7000c-ee43-4fad-9c44-4d25348e6242}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{e9d903d4-6173-4372-a54f-5f59bf33c995}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:37453/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

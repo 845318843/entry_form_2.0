@@ -1,0 +1,68 @@
+F:\JZT\JZT\obj\Debug\JZT.csprojResolveAssemblyReference.cache
+F:\JZT\JZT\obj\Debug\JZT.dll
+F:\JZT\JZT\obj\Debug\JZT.pdb
+F:\JZT\JZT\bin\JZT.dll
+F:\JZT\JZT\bin\JZT.pdb
+F:\JZT\JZT\bin\Antlr3.Runtime.dll
+F:\JZT\JZT\bin\AspNet.ScriptManager.jQuery.dll
+F:\JZT\JZT\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+F:\JZT\JZT\bin\DotNetOpenAuth.AspNet.dll
+F:\JZT\JZT\bin\DotNetOpenAuth.Core.dll
+F:\JZT\JZT\bin\DotNetOpenAuth.OAuth.Consumer.dll
+F:\JZT\JZT\bin\DotNetOpenAuth.OAuth.dll
+F:\JZT\JZT\bin\DotNetOpenAuth.OpenId.dll
+F:\JZT\JZT\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+F:\JZT\JZT\bin\EntityFramework.dll
+F:\JZT\JZT\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+F:\JZT\JZT\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+F:\JZT\JZT\bin\Microsoft.ScriptManager.MSAjax.dll
+F:\JZT\JZT\bin\Microsoft.ScriptManager.WebForms.dll
+F:\JZT\JZT\bin\Microsoft.Web.Infrastructure.dll
+F:\JZT\JZT\bin\System.Web.Optimization.dll
+F:\JZT\JZT\bin\System.Web.Providers.dll
+F:\JZT\JZT\bin\WebGrease.dll
+F:\JZT\JZT\bin\EntityFramework.xml
+F:\JZT\JZT\bin\DotNetOpenAuth.Core.xml
+F:\JZT\JZT\bin\DotNetOpenAuth.OAuth.xml
+F:\JZT\JZT\bin\DotNetOpenAuth.OAuth.Consumer.xml
+F:\JZT\JZT\bin\DotNetOpenAuth.OpenId.xml
+F:\JZT\JZT\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+F:\JZT\JZT\bin\DotNetOpenAuth.AspNet.xml
+F:\JZT\JZT\bin\zh-Hans\EntityFramework.resources.dll
+F:\JZT\JZT\bin\zh-Hans\System.Web.Optimization.resources.dll
+F:\JZT\JZT\bin\zh-Hans\System.Web.Providers.resources.dll
+F:\JZT\JZT\bin\zh-Hans\Microsoft.AspNet.Membership.OpenAuth.resources.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\JZT.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\JZT.pdb
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\Antlr3.Runtime.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.Core.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\EntityFramework.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\System.Web.Optimization.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\System.Web.Providers.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\WebGrease.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\EntityFramework.xml
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.Core.xml
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\zh-Hans\System.Web.Optimization.resources.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\zh-Hans\System.Web.Providers.resources.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\bin\zh-Hans\Microsoft.AspNet.Membership.OpenAuth.resources.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\obj\Debug\JZT.csprojResolveAssemblyReference.cache
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\obj\Debug\JZT.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT\JZT\obj\Debug\JZT.pdb

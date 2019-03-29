@@ -1,0 +1,4 @@
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT_Search\Model\bin\Debug\Model.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT_Search\Model\bin\Debug\Model.pdb
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT_Search\Model\obj\Debug\Model.dll
+C:\Users\zuoxianwei\Documents\Visual Studio 2012\Projects\JZT_Search\Model\obj\Debug\Model.pdb

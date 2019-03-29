@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>九州通报名查询</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- CSS -->
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link href="../../jquery-easyui-1.3.1/themes/default/easyui.css" rel="stylesheet" />
+        <link href="../../jquery-easyui-1.3.1/themes/icon.css" rel="stylesheet" />
+
+        <script src="../../../Scripts/jquery-1.7.1.js"></script>
+        <script src="../../jquery-easyui-1.3.1/jquery.easyui.min.js"></script>
+        <script src="../../jquery-easyui-1.3.1/locale/easyui-lang-zh_CN.js"></script>
+    </head>
+    <script type="text/javascript">
+
+        $(function () {
+            load_data();
+            $("#tiaozhuan").css("display", "none");
+        })
+
+        //加载数据
+        function load_data() {
+            
+            name = sessionStorage["name"];
+            phone =sessionStorage["phone"];
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "../../../Service.asmx/Search",
+                data: '{"name":"' + name + '","phone":"' + phone + '"}',
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                   
+                    var obj = eval("(" + result.d + ")");
+                    //alert(obj.Name);
+                    //alert("进入");
+                    sessionStorage["ID"] = obj.ID;
+                    document.getElementById("name").value = obj.Name;
+                    
+                    document.getElementById("phone").value = obj.Phone;
+                   
+                    document.getElementById("s_class").value = obj.Banji;
+                   
+                    document.getElementById("student_ID").value = obj.StudentID;
+                    
+                    var sgender = document.getElementsByName("gender");
+                    for (var i = 0; i < sgender.length; i++) {
+                        if (obj.Gender == "男") {
+                            sgender[0].checked = true;
+                        }
+                        else if (obj.Gender == "女") {
+                            sgender[1].checked = true;
+                        }
+                        else { }
+                    }
+
+                    var strain = document.getElementsByName("train");
+                    for (var i = 0; i < strain.length; i++)
+                    {
+                        if (obj.IsTrain == "参加")
+                        {
+                            strain[0].checked = true;
+                        }
+                        else if (obj.IsTrain == "不参加") {
+                            strain[1].checked = true;
+                        }
+                        else { }
+                    }
+                    document.getElementById("describe").value = obj.Describe;
+                    
+                    document.getElementById("qq").value = obj.QQ;
+                    
+                    },
+                    
+                error: function (result) {
+                }
+            })
+        }
+
+
+        function isLegal()
+        {
+            if (isChinese($("#name").val()))
+            {
+                if (checkMobile())
+                {
+                    if (IsTrain())
+                    {
+                        if (isBanji($("#s_class").val()))
+                        {
+                            if (isID($("#student_ID").val()))
+                            {
+                                if (is_describe_empty($("#describe").val()))
+                                {
+                                    modify();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //修改
+        function modify() {
+            var storage = window.localStorage;
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var s_class = $("#s_class").val();
+            var studentID = $("#student_ID").val();
+            var gender = "";
+            var train = "";
+            var sgender = document.getElementsByName("gender");
+            for (var i = 0; i < sgender.length; i++) {
+                if (sgender[i].checked == true) {
+                    gender = sgender[i].value;
+                }
+            }
+
+            var strain = document.getElementsByName("train");
+            for (var i = 0; i < strain.length; i++) {
+                if (strain[i].checked == true) {
+                    train = strain[i].value;
+                }
+            }
+            var describe = $("#describe").val();
+            var qq = $("#qq").val();
+            var ID = sessionStorage["ID"];
+            //var ID = localStorage.ID;
+            //alert('{"id":' + ID + ',"name":"' + name + '","gender":"' + gender + '","student_ID":"' + studentID + '","phone":"' + phone + '","qq":"' + qq + '","banji":"' + s_class + '","describe":"' + describe + '"}')
+            $.ajax({
+                type: "post",
+                contentType: "application/json",
+                url: "../../../Service.asmx/Modify",
+                data: '{"id":' + ID + ',"name":"' + name + '","gender":"' + gender + '","student_ID":"' + studentID + '","phone":"' + phone + '","qq":"' + qq + '","banji":"' + s_class + '","describe":"' + describe + '","istrain":"'+train+'"}',
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                    alert(result.d);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest);
+                    alert(textStatus);
+                    alert(errorThrown);
+                }
+            })
+        }
+
+
+        //跳转到开始查询
+        function backquery()
+        {
+            sessionStorage["name"] = "";
+            sessionStorage["phone"] = "";
+            sessionStorage["ID"] = "";
+            //alert("准备跳转");
+            //window.location.href = "http://182.61.54.180:8022/JZT_Search/index.html";
+            //window.location.href = "http://www.baidu.com";
+        }
+
+
+       
+
+        function B()
+        {
+            var button = document.getElementById("tiaozhuan");
+            button.onclick();
+            
+        }
+
+        //判断手机号
+        function checkMobile() {
+            var phone = $("#phone").val();
+            if (!(/^1[3|4|5|7|8][0-9]\d{8}$/.test(phone))) {
+                alert("不是完整的11位手机号或者正确的手机号前七位");
+                //document.mobileform.mobile.focus();
+                $("#phone").focus();
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        //判断姓名是否为中文
+        function isChinese(temp) {
+            var re = /[^\u4e00-\u9fa5]/;
+            if (re.test(temp)) {
+                alert("输入的姓名不正确哦！");
+                return false;
+            }
+            else {
+
+
+                var s = 0;
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp.charAt(i).match(/[u0391-uFFE5]/)) {
+                        s += 2;
+                    } else {
+                        s++;
+                    }
+                }
+                if (s >= 2 && s <= 4) {
+                    return true;
+                }
+                else {
+                    alert("输入的姓名不正确哦！");
+                    return false;
+                }
+            }
+            alert("输入的姓名不正确哦！");
+            return false;
+        }
+
+        //判断班级
+        function isBanji(temp) {
+            var s = 0;
+            for (var i = 0; i < temp.length; i++) {
+                if (temp.charAt(i).match(/[u0391-uFFE5]/)) {
+                    s += 2;
+                } else {
+                    s++;
+                }
+            }
+            if (s >= 4) {
+                return true;
+            }
+            else {
+                alert("输入的班级不正确哦！");
+                return false;
+            }
+            alert("输入的姓名不正确哦！");
+            return false;
+        }
+
+        //判断学号
+        function isID(temp) {
+            //var temp = $("#student_ID").val();
+            if (!(/^170\d{7}$/.test(temp))) {
+                alert("输入的学号不正确");
+                //alert(temp);
+                return false;
+            }
+            else {
+                //$("#student_ID").css('background', 'none');
+                return true;
+            }
+            alert("输入的学号不正确");
+            return false;
+        }
+
+        //判断个人描述
+        function is_describe_empty(temp)
+        {
+            if (temp.length <= 0) {
+                alert("个人描述不能为空哦");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        //判断是否参加集训
+        function IsTrain()
+        {
+            var strain = document.getElementsByName("train");
+            for (i = 0; i < strain.length; i++)
+            {
+                if (strain[i].checked == true)
+                {
+                    return true;
+                }
+            }
+            alert("记得选择是否参加集训哦~");
+            return false;
+        }
+    </script>
+    <body>
+
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="logo span4">
+                        <h1><a href="#">报名查询&修改 <span class="red"></span></a></h1>
+                    </div>
+                    <div class="links span8">
+                        <!--<a class="home" href="#" rel="tooltip" data-placement="bottom" data-original-title="Home"></a>
+                        <a class="blog" href="#" rel="tooltip" data-placement="bottom" data-original-title="Blog"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-container container">
+            <div class="row">
+               
+                <div class="register span6">
+                    <form>
+                        <h2>查询&修改 <span class="red"><strong>九州通</strong></span></h2>
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" >
+                        <label for="phone">手机号</label>
+                        <input type="text" id="phone" maxlength="11" >
+                        <label for="s_class">班级</label>
+                        <input type="text" id="s_class" >
+                        <label for="student_ID">学号</label>
+                        <input type="text" id="student_ID" maxlength="10" >
+                        <label for="qq">QQ</label>
+                        <input type="text" id="qq" maxlength="10">
+                        <label for="gender">性别</label>
+                        <input type="radio" name="gender" value="男" style="margin-left: 10px;"/>男
+                        <input type="radio" name="gender" value="女" />女
+                        <label for="IsTrain">是否参加十一集训</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="train" value="参加" style="margin-left: 10px;"/>参加
+                        <input type="radio" name="train" value="不参加" />不参加
+                        <label for="describe">个人描述</label>
+                        <textarea id="describe">
+                        </textarea>
+                        <button id="query" onclick="isLegal()">修改</button>&nbsp;&nbsp;&nbsp;<button id="exit" onclick="B()"><a  href="../../index.html">退出</a></button>
+                        <a id="tiaozhuan" style="display:none"  " href="">退出</a>
+                        <!--<a href="../../index.html">../../index.html</a>-->
+                        <!--http://182.61.54.180:8022/JZT_Search/index.html-->
+                        <!--<button id="exit" onclick="backquery()">退出</button>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+		<div align="center">Collect from <a href="#" target="_blank" title="九州通">九州通</a></div>
+        <!-- Javascript --> 
+        <script src="assets/js/jquery-1.8.2.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
+    </body>
+
+</html>
+

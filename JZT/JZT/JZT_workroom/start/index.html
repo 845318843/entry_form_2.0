@@ -1,0 +1,647 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>九州通报名</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+    <link href="../jquery-easyui-1.3.1/themes/default/easyui.css" rel="stylesheet" />
+    <link href="../jquery-easyui-1.3.1/themes/icon.css" rel="stylesheet" />
+
+
+    <script src="../../../Scripts/jquery-1.7.1.js"></script>
+    <script src="../jquery-easyui-1.3.1/jquery.easyui.min.js"></script>
+    <script src="../jquery-easyui-1.3.1/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+
+        //页面加载
+        $(function () {
+            JudgeIsLegal();
+            // Excue_ShowCount();
+            $("#count").css("display", "none");
+            
+        });
+
+
+        //男选中
+        function selectman() {
+            $("#imgman").attr("src", "images/boy2.png");
+            $("#imgwoman").attr("src", "images/girl1.png");
+            var sgender = document.getElementsByName("gender");
+
+            for (var i = 0; i < sgender.length; i++) {
+                    if (sgender[i].value == "男") {
+                        sgender[i].checked = true;
+                       
+                    }
+            }
+        }
+
+        //女选中
+        function selectwoman() {
+            $("#imgwoman").attr("src", "images/girl2.png");
+            $("#imgman").attr("src", "images/boy1.png");
+
+            var sgender = document.getElementsByName("gender");
+
+            for (var i = 0; i < sgender.length; i++) {
+                    if (sgender[i].value == "女") {
+                        sgender[i].checked = true;
+                        
+                    }   
+            }
+        }
+
+        //判断是否合法
+        function JudgeIsLegal() {
+            $("#submit").click(function () {
+                if (isChinese($("#name").val())) {
+                    if (isBanji($("#s_class").val())) {
+                        if (checkMobile()) {
+                            if ((isID($("#student_ID").val()))) {
+                                Insert();
+                            }
+                        }
+                    }
+                }
+
+            });
+
+        }
+
+        //插入
+        function Insert() {
+
+            //alert("111111");
+            var name = "";
+
+            var gender = "";
+
+            var banji = "";
+
+            var studentid = "";
+
+            var phone = "";
+
+            var qq = "";
+
+            var describe = "";
+            
+            var mydate = new Date();
+            //alert(mydate.getFullYear());
+            var month = parseInt(mydate.getMonth()) + 1;
+            var time = mydate.getFullYear() + "/" + month  + "/" + mydate.getDate() + "/ " + mydate.getHours() + ":" + mydate.getMinutes() + ":" + mydate.getSeconds();
+            name = $("#name").val();
+
+            var sgender = document.getElementsByName("gender");
+
+            for (var i = 0; i < sgender.length; i++) {
+                if (sgender[i].checked == true) {
+                   
+                    gender = sgender[i].value;
+
+                }
+            }
+            
+
+            banji = $("#s_class").val();
+            studentid = $("#student_ID").val();
+            phone = $("#phone").val();
+            qq = $("#qq").val();
+            describe = $("#describe").val();
+
+            //alert("banji:" + banji + " name:" + name + " phone:" + phone + " decribe:" + describe + " gender:" + gender);
+            if (name != "" && banji != "" && phone != "" && describe != "" && gender != "") {
+
+                
+                
+
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json",
+                    url: "../../Service.asmx/IsRepeat",
+                    data: '{"name":"' + name + '","phone":"' + phone + '"}',
+                    dataType: "json",
+                    async: false,
+                    success: function (result) {
+                        if (result.d == "此生已报名，请勿重复") {
+                            alert(result.d);
+                        }
+                        else {
+                            //开始
+                            $.ajax({
+                                type: "post",
+                                contentType: "application/json",
+                                url: "../../Service.asmx/Insert",
+                                data: '{"name": "' + name + '","gender":"' + gender + '","banji":"' + banji + '","studentid":"' + studentid + '","phone":"' + phone + '","qq":"' + qq + '","describe":"' + describe + '","time":"'+time+'"}',
+                                dataType: "json",
+                                async: false,
+                                success: function (result) {
+                                    alert(result.d);
+                                    if (result.d == "报名成功")
+                                    {
+                                        document.getElementById("name").value = "";
+                                        document.getElementById("qq").value = "";
+                                        document.getElementById("phone").value = "";
+                                        document.getElementById("s_class").value = "";
+                                        document.getElementById("student_ID").value = "";
+                                        document.getElementById("describe").value = "";
+                                        //Excue_ShowCount();
+                                    }
+                                }
+                            })
+                            //结束
+                        }
+                    }
+                })
+
+
+
+            }
+            else {
+                alert("有必填项内容为空,请补充完整哦!");
+            }
+
+        }
+
+        //判断手机号
+        function checkMobile() {
+            var phone = $("#phone").val();
+            if (!(/^1[3|4|5|7|8][0-9]\d{8}$/.test(phone))) {
+                alert("不是完整的11位手机号或者正确的手机号前七位");
+                //document.mobileform.mobile.focus();
+                $("#phone").focus();
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        //判断姓名是否为中文
+        function isChinese(temp)  
+        {  
+            var re = /[^\u4e00-\u9fa5]/;  
+            if (re.test(temp)) {
+                alert("输入的姓名不正确哦！");
+                return false;
+            }
+            else {
+
+
+                var s = 0;
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp.charAt(i).match(/[u0391-uFFE5]/)) {
+                        s += 2;
+                    } else {
+                        s++;
+                    }
+                }
+                if (s >= 2 && s <= 4) {
+                    return true;
+                }
+                else {
+                    alert("输入的姓名不正确哦！");
+                    return false;
+                }
+            }
+            alert("输入的姓名不正确哦！");
+            return false;
+        }  
+        
+        //判断班级
+        function isBanji(temp)
+        {
+            var s = 0;
+            for (var i = 0; i < temp.length; i++) {
+                if (temp.charAt(i).match(/[u0391-uFFE5]/)) {
+                    s += 2;
+                } else {
+                    s++;
+                }
+            }
+            if (s >= 4) {
+                return true;
+            }
+            else {
+                alert("输入的班级不正确哦！");
+                return false;
+            }
+            alert("输入的姓名不正确哦！");
+            return false;
+        }
+
+        //判断学号
+        function isID(temp)
+        {
+            //var temp = $("#student_ID").val();
+            if (!(/^170\d{7}$/.test(temp))) {
+                alert("输入的学号不正确");
+                alert(temp);
+                return false;
+            }
+            else {
+                $("#student_ID").css('background', 'none');
+                return true;
+            }
+            alert("输入的学号不正确");
+            return false;
+        }
+
+        //姓名错误提示
+        function Name_onblur()
+        {
+            var temp = $("#name").val();
+            var re = /[^\u4e00-\u9fa5]/;
+            if (re.test(temp)) {
+                $("#name").attr("style", "background:url('images/warn1.jpg') no-repeat 130px 10px");
+                return false;
+            }
+            else {
+
+
+                var s = 0;
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp.charAt(i).match(/[u0391-uFFE5]/)) {
+                        s += 2;
+                    } else {
+                        s++;
+                    }
+                }
+                if (s >= 2 && s <= 4) {
+                    $("#name").css('background','none');
+                    return true;
+                }
+                else {
+                    $("#name").attr("style", "background:url('images/warn1.jpg') no-repeat 130px 10px");
+                    return false;
+                }
+            }
+            $("#name").css('background-image', 'url(images/warn1.jpg) no-repeat');
+            return false;
+        }
+
+        //电话错误提示
+        function Tel_onblur()
+        {
+            var phone = $("#phone").val();
+            if (!(/^1[3|4|5|7|8][0-9]\d{8}$/.test(phone))) {
+                $("#phone").attr("style", "background:url('images/warn1.jpg') no-repeat 130px 10px");
+                //document.mobileform.mobile.focus();
+                //$("#phone").focus();
+                return false;
+            }
+            else {
+                $("#phone").css('background', 'none');
+                return true;
+            }
+        }
+
+        //班级错误提示
+        function Banji_onblur()
+        {
+            var temp = $("#s_class").val();
+            var s = 0;
+            for (var i = 0; i < temp.length; i++) {
+                if (temp.charAt(i).match(/[u0391-uFFE5]/)) {
+                    s += 2;
+                } else {
+                    s++;
+                }
+            }
+            if (s >= 4) {
+                $("#s_class").css('background', 'none');
+                return true;
+            }
+            else {
+                $("#s_class").attr("style", "background:url('images/warn1.jpg') no-repeat 130px 10px");
+                return false;
+            }
+            $("#s_class").attr("style", "background:url('images/warn1.jpg') no-repeat 130px 10px");
+            return false;
+        }
+
+        //学号错误提示
+        function ID_onblur()
+        {
+            var temp = $("#student_ID").val();
+            if (!(/^170\d{7}$/.test(temp))) {
+                $("#student_ID").attr("style", "background:url('images/warn1.jpg') no-repeat 130px 10px");
+                return false;
+            }
+            else {
+                $("#student_ID").css('background', 'none');
+                return true;
+            }
+            $("#student_ID").css('background', 'none');
+            return false;
+        }
+
+        //姓名获得焦点
+        function Name_onfocus()
+        {
+            $("#name").css('background', 'none');
+        }
+
+        //电话获得焦点
+        function Tel_onfocus()
+        {
+            $("#phone").css('background', 'none');
+        }
+
+        //班级获得焦点
+        function Banji_onfocus()
+        {
+            $("#s_class").css('background', 'none');
+        }
+
+        //学号获得焦点
+        function ID_onfocus()
+        {
+            $("#student_ID").css('background', 'none');
+        }
+
+        //返回
+        function back()
+        {
+                window.location.href = "http://182.61.54.180:8022/JZT_Search/index.html";
+        }
+
+
+        function ShowCount(temp) {
+            document.getElementById("count").innerHTML = "当前已报名人数:" + temp;
+        }
+
+
+        //显示报名人数
+        function Excue_ShowCount() {
+            
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json",
+                    url: "../../Service.asmx/GetCount",
+                    data: '{"id":"id"}',
+                    dataType: "json",
+                    async: false,
+                    success: function (result) {
+                        //alert(result.d);
+                        ShowCount(result.d);
+                    },
+                    error: function (result) {
+                        alert(result.d);
+                    }
+                })
+            }
+        
+    </script>
+    
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <section id="sidebar">
+        <div class="inner">
+            <nav>
+                <ul>
+                    <!--<li><a href="#intro">Welcome</a></li>
+							<li><a href="#one">Who we are</a></li>
+							<li><a href="#two">What we do</a></li>
+							<li><a href="#three">Get in touch</a></li>-->
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Intro -->
+        <section id="intro" class="wrapper style1 fullscreen fade-up">
+            <div>
+                <p id="count">当前报名人数:</p>
+            </div>
+            <div class="inner">
+                <h1 >九州通</h1>
+                <p>
+                    九州通工作室欢迎你的加入 <a href="#maoji"></a>
+                    <br />
+                    这里有你更精彩 <a href="#signup">加入吧！</a>
+                </p>
+                <ul class="actions">
+                    <li><a href="#first" class="button scrolly">九州通</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- One -->
+        <section id="one" class="wrapper style2 spotlights">
+            <section>
+                <a  class="image">
+                    <img src="images/school1.jpg" alt="" data-position="center center" style="width: 100%;height: 100%;"/></a>
+                <div class="content">
+                    <div class="inner">
+                        <h2 id="first">九州通</h2>
+                        <p>九州通欢迎你的加入</p>
+                        <ul class="actions">
+                            <li><a href="#second" class="button">九州通</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <a  class="image">
+                    <img src="images/school2.jpg" alt="" data-position="top center" style="width: 100%;height: 100%;"/></a>
+                <div class="content">
+                    <div class="inner">
+                        <h2 id="second">这里是九州通</h2>
+                        <p>九州通工作室，给你一份完整的大学</p>
+                        <ul class="actions">
+                            <li><a href="#third" class="button">九州通</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <a  class="image">
+                    <img src="images/jzt.jpg" alt="" data-position="25% 25%" style="width: 100%;height: 100%;"/></a>
+                <div class="content">
+                    <div class="inner">
+                        <h2 id="third">九州通工作室</h2>
+                        <p>不负韶华，青春在路上</p>
+                        <ul class="actions">
+                            <li><a href="#forth" class="button">了解更多</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+       <!-- <div class="copyrights">来自 <a href="#maoji">九州通</a></div>-->
+
+        <!-- Two -->
+        <section id="two" class="wrapper style3 fade-up">
+            <div class="inner">
+                <h2 id="forth">我们做什么</h2>
+                <p>网页，android，电脑程序，任你选</p>
+                <div class="features">
+                    <section>
+                        <span class="icon major fa-code"></span>
+                        <h3>加入吧</h3>
+                        <p>可能你在犹豫，但来了之后，你不会后悔</p>
+                    </section>
+                    <section>
+                        <span class="icon major fa-lock"></span>
+                        <h3>为什么要加入工作室</h3>
+                        <p>不负韶华，青春在路上</p>
+                    </section>
+                    <section>
+                        <span class="icon major fa-cog"></span>
+                        <h3>加入吧，别再犹豫</h3>
+                        <p>你加入的不是一个集体，而是一个团体，心是在一块的</p>
+                    </section>
+                    <section>
+                        <span class="icon major fa-desktop"></span>
+                        <h3>时刻欢迎你</h3>
+                        <p>九州通工作室全体成员欢迎您</p>
+                    </section>
+                    <section>
+                        <span class="icon major fa-chain"></span>
+                        <h3>有经验</h3>
+                        <p>有经验，有学长带你，入门更快</p>
+                    </section>
+                    <section>
+                        <span class="icon major fa-diamond"></span>
+                        <h3>九州通全体成员致辞：</h3>
+                        <p>以饱满的热情迎接，指导每一位新成员！</p>
+                    </section>
+                </div>
+                <ul class="actions">
+                    <li><a href="#maoji" class="button">报名</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Three -->
+        <section id="three" class="wrapper style1 fade-up">
+            <div class="inner">
+                <h2 id="maoji">九州通工作室简介<input type="text"  style="display: none;"></h2>
+                <p>
+                    九州通工作室是2010年，我校与九州通医药集团进行的校企合作，主要开发智能医药管理，物流、仓储管理，截止到现在，工作室一共培养了近百名毕业生，毕业生从工作室得到了很大的锻炼，为走向社会打下了深厚的基础。
+                </p>
+                <div class="split style1">
+                    <section>
+                        <form>
+                            <div class="field half first" id="signup">
+                                <label for="name">姓名</label>
+                                <input type="text" onblur="Name_onblur()" onfocus="Name_onfocus()" name="name" id="name" placeholder="请填写姓名：必填" />
+                            </div>
+                            <div class="field half">
+                                <label for="email">QQ</label>
+                                <input type="text" name="qq" id="qq" maxlength="10" placeholder="请输入QQ：选填"/>
+                            </div>
+                            <div class="field half banji">
+                                <label for="name">班级</label>
+                                <input type="text" onblur="Banji_onblur()" onfocus="Banji_onfocus()" name="s_class" id="s_class" placeholder="如：17计科一班：必填"/>
+                            </div>
+                            <div class="field half xuehao">
+                                <label for="name">学号</label>
+                                <input type="text" onblur="ID_onblur()" onfocus="ID_onfocus()" name="student_ID" id="student_ID" maxlength="10" placeholder="请输入学号：必填"/>
+                            </div>
+                            <div class="field half shouji">
+                                <label for="name">手机</label>
+                                <input type="text" onblur="Tel_onblur()" onfocus="Tel_onfocus()" name="phone" id="phone" maxlength="11" placeholder="请填写手机号：必填"/>
+                            </div>
+                            <div class="field half gender">
+                                <label for="name">性别</label>
+                                <div  class="gender" style="background: rgba(255, 255, 255, 0.05); border-radius: 0.25em; border: none; border: solid 1px rgba(255, 255, 255, 0.15); color: inherit; display: block; outline: 0; height: 48px;padding: 10px;">
+                                    <a style="text-decoration: none;  " onclick="selectman()"><img id="imgman" src="images/boy1.png" /></a><input type="radio" name="gender" value="男"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a style="text-decoration: none;  " onclick="selectwoman()"><img id="imgwoman" src="images/girl1.png" /></a><input type="radio" name="gender" value="女"  />
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>自我描述</label>
+                                <textarea name="describe" id="describe" rows="5" placeholder="随便说两句吧，让我们更好地了解你~必填"></textarea>
+                            </div>
+                            <ul class="actions">
+                                <li><a href="#gender" class="button submit" id="submit">提交报名</a>&nbsp;&nbsp;<a href="#gender" class="button submit" onclick="back()" id="btn2">查询入口</a></li>
+                            </ul>
+                            
+                        </form>
+                    </section>
+                    <section>
+                        <ul class="contact">
+                            <li>
+                                <h3>地址</h3>
+                                <span>汇森六楼<br />
+                                    电梯口对面<br />
+                                </span>
+                            </li>
+                            <li>
+                                <h3>招新群号</h3>
+                                <a >457172391</a>
+                            </li>
+                            <li>
+                                <h3>手机</h3>
+                                <span>(000) 000-0000</span>
+                            </li>
+                            <li>
+                                <h3>社区</h3>
+                                <ul class="icons">
+                                    <li><a  class="fa-twitter">南阳理工学院东南校区</a></li>
+                                    <!--<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+												<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
+												<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+												<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>-->
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+            <!--<div id="fail">
+                <h2>亲爱的小<h1>17</h1>
+                    ,你手机号没写对啊~</h2>
+            </div>
+            <div id="success">
+                <h1>恭喜你！报名成功</h1>
+            </div>-->
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="wrapper style1-alt">
+        <div class="inner">
+            <ul class="menu">
+                <li>&copy; 版权属于</li>
+                <li>九州通工作室 <a  target="_blank" title="九州通">九州通</a> - Collect from <a  title="九州通" target="_blank">九州通</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
+</body>
+<script>
+    function chred(ele) {
+        var f = ele.checked;
+        ele.parentNode.style.background = "red";
+        var radios = document.getElementsByName(ele.name);
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked == false) {
+                radios[i].parentNode.style.background = "#fff";
+            }
+        }
+    }
+</script>
+</html>
